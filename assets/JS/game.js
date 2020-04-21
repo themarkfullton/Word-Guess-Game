@@ -1,6 +1,8 @@
-function createLines (word) {
-    for (var i = 0; i < word.length; i++){
 
+
+function printLines (word) {
+    for (var i = 0; i < word.length; i++){
+        
     }
 }
 

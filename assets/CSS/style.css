@@ -1,0 +1,30 @@
+body {
+    background: repeating-linear-gradient(
+        45deg,
+        #1e272c,
+        #1e272c 10px,
+        #282C35 10px,
+        #282C35 20px
+      );
+}
+
+#exposition{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 50px;
+    padding: 100px;
+    opacity: 0.87;
+    border-radius: 25px;
+    background-color: black;
+    color: white;
+    z-index: 10;
+}
+
+.header{
+    background-color: white;
+    width: 100%;
+}
+
