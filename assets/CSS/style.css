@@ -8,8 +8,21 @@ body {
       );
 }
 
+body::-webkit-scrollbar-button {
+    background: none;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #7FB27F;
+}
+
+body::-webkit-scrollbar-track {
+    background: none;
+}
+
 #exposition{
     position: absolute;
+    overflow: scroll;
     top: 0;
     left: 0;
     width: 90%;
