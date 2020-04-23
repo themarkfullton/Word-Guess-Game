@@ -2,7 +2,7 @@
     let maxWrong = 0;
     let mistakes = 0;
     let guessed = [];
-    let wordStatus = null;
+    let currWord = null;
     let totalRight = 0;
 
     let game = {
@@ -26,19 +26,67 @@
         },
 
         selectSetting: function(){
+            let getDungeonBox = document.querySelector("#dungeonBox");
+            let getPlaceTitle = document.querySelector("#placeTitle");
 
-        }
+            setting = Math.floor(Math.random() * 4);
+
+            switch(setting) {
+                case 0:
+                    getDungeonBox.style.backgroundImage = 'assets/images/Settings/set-city.jpg';
+                    getPlaceTitle.innerHTML = "<h4>Abandonned Street</h4>";
+                    break;
+                case 1:
+                    getDungeonBox.style.backgroundImage = 'assets/images/Settings/set-forest.jpg';
+                    getPlaceTitle.innerHTML = "<h4>Forgotten Forest</h4>";
+                    break;
+                case 2:
+                    getDungeonBox.style.backgroundImage = 'assets/images/Settings/set-hospital.jpg';
+                    getPlaceTitle.innerHTML = "<h4>Twisted Hospital</h4>";
+                    break;
+                case 3:
+                    getDungeonBox.style.backgroundImage = 'assets/images/Settings/set-house.jpg';
+                    getPlaceTitle.innerHTML = "<h4>Living Mansion</h4>";
+                    break;
+                case 4:
+                    getDungeonBox.style.backgroundImage = 'assets/images/Settings/set-village.jpg';
+                    getPlaceTitle.innerHTML = "<h4>Fishing Village</h4>";
+                    break;
+              }
+        },
 
         wordSetUp: function(){
             let getFearPic = document.querySelector("#fearPic");
             let getfearBox = document.querySelector("#fearBox");
             let getNameBox = document.querySelector("#Name Box");
-            let getExposition = document.querySelector("#remGuessBox");
+            let getRemGuess = document.querySelector("#remGuessBox");
             
-            answer = dictionary[Math.floor(Math.random() * dictionary.length)];
+            var indexNum = Math.floor(Math.random() * dictionary.length);
 
+            answer = dictionary[indexNum];
+            lives = dictionary[indexNum][error];
 
-        }
+            getFearPic.innerHTML = '<img alt="fear" src="assets/Fears/'+ indexNum +'0>';
+            getfearBox.innerHTML = '<h5>' + dictionary[indexNum][desc].toUpperCase + '</h5>'
+            getNameBox.innerHTML = '<h4>' + this.printHangLines() + '</h4>';
+            getRemGuess.innerHTML = lifeBar(lives);
+        },
+
+        printHangLines: function(){
+            currWord = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
+        },
+
+        printRemGuess: function(lives){
+            var lifeBar = '<h5>GUESSES LEFT:</h5> <span id="livesRem">'; 
+            
+            for(var i = 0; i <= lives; i++){
+                lifeBar += '👻';
+            }
+
+            lifeBar += '</span>';
+
+            return lifeBar;
+        },
 
         main: function() {
             document.onkeyup = function(event) {
