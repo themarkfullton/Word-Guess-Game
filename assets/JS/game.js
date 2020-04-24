@@ -21,6 +21,7 @@
             
             getInterface.style.backgroundColor = "#174038";
             getHashBox.style.backgroundColor = "#174038";
+            getHashBox.style.padding = "30px";
             getDungeonText.style.backgroundColor = "rgba(0, 0, 0, 0.6)";
             
     
@@ -54,7 +55,6 @@
             switch(setting) {
                 case 0:
                     getDungeonBox.style.backgroundImage = 'url("assets/images/Settings/set-city.jpg")';
-                    getDungeonBox.style.borderRadius = "25px";
                     getPlaceTitle.innerHTML = "<h3>Abandonned Street</h3>";
                     getDialogue.innerHTML = '<p>On the way home, <span class="sName">Shiver</span> feels someone watching them...</p>';
                     break;
@@ -102,16 +102,14 @@
 
         printHangLines: function(){
             let getHashBox = document.querySelector("#hashBox");
-            getHashBox.style.letterSpacing = "2px";
-            getHashBox.style.padding = "30px";
             
             for (var i = 0; i < answer.word.length; i++){
                 currWord.push("_");   
             }
-            
+
             var hashString = currWord.join(" ");
 
-            getHashBox.innerHTML = "<h1>" + hashString + "</h1>";
+            getHashBox.innerHTML = "<h1>" + hashString + "phobia</h1>";
         },
 
         printRemGuess: function(lives){
@@ -130,25 +128,62 @@
         },
 
         checkGuess: function(letter){
-            for (var i = 0; i < answer.word.length; i++){
-                if (this.isAlph(letter)){
+            let getDialogue = document.querySelector("#dialogue");
+            let getHashBox = document.querySelector("#hashBox");
+            console.log(currWord);
+            console.log(answer.word);
+
+            var found = false;
+            var alreadyGuessed = game.checkIfAlreadyGuessed(letter);
+
+            if (game.isAlph(letter) && !alreadyGuessed){
+
+                for (var i = 0; i < answer.word.length; i++){
+
                     if (currWord[i] == "_"){
                 
                         if (letter == answer.word[i]){
                             currWord[i] = letter;
-                        }
-                        else {
-                            lives--;
-                            this.printRemGuess(lives);
-                            guessed.push(letter);
-                            this.printGuessWord(letter);
+                            found = true;
                         }
                     }
                 }
-                else {
-                    console.log("Key was not a letter; did not run checkGuess");
+                if (found){
+                    var newDiv = document.createElement("p");
+                    newDiv.textContent = "Good job! '" + letter.toUpperCase() + "' is in the name!";
+                    getDialogue.prepend(newDiv); 
                 }
+                else {
+                    lives--;
+                    console.log(lives);
+                    this.printRemGuess(lives);
+                    var newDiv = document.createElement("p");
+                    newDiv.textContent = "Unfortunately '" + letter.toUpperCase() + "' is not the name! The fear begins to manifest.";
+                    getDialogue.prepend(newDiv); 
+                }
+                guessed.push(letter);
+                this.printGuessWord(letter);
+                
+                
+                var hashString = currWord.join(" ");
+
+                getHashBox.innerHTML = "<h1>" + hashString + "phobia</h1>";
             }
+            else {
+                console.log("Key was not a letter; did not run checkGuess");
+            }
+        },
+
+        checkIfAlreadyGuessed: function(letter){
+            for (var i = 0; i < guessed.length; i++){
+
+                if (guessed[i] == letter){
+                    console.log("Found letter in guessed");
+                    return true;
+                }
+            } 
+            console.log("Did not find letter in guessed");
+            return false;
         },
 
         printGuessWord: function(letter){
@@ -158,11 +193,12 @@
         },
 
         main: function() {
+
             document.onkeyup = function(event) {
 
                 var letter = event.key.toLowerCase();
-        
-                this.checkGuess(letter);
+                console.log(letter);
+                game.checkGuess(letter);
 
             };
         },
