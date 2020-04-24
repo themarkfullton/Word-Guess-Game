@@ -4,6 +4,7 @@
     var guessed = [];
     var numDefeat = 0;
     var currWord = [];
+    var gameEnd = false;
 
     let game = {
         
@@ -13,6 +14,7 @@
         },
 
         setGameUp: function(){
+            gameEnd = false; // Putting this here because this function is also called when gameEnd = true
             let getInterface = document.querySelector("#interface");
             let getDungeonText = document.querySelector('#dungeonText');
             let getGuessBox = document.querySelector('#guessBox');
@@ -31,6 +33,7 @@
             this.wordSetUp();
             getGuessBox.style.backgroundColor = "#5b8c85";
             getPastGuess.innerHTML = "<h5>Past Guess:<h5>";
+            guessed = [];
             this.main();
         },
 
@@ -103,6 +106,8 @@
         printHangLines: function(){
             let getHashBox = document.querySelector("#hashBox");
             
+            currWord = [];
+
             for (var i = 0; i < answer.word.length; i++){
                 currWord.push("_");   
             }
@@ -192,13 +197,50 @@
             getPastGuess.append(letter);
         },
 
+        checkScores: function(){
+            let getDialogue = document.querySelector("#dialogue");
+
+            if (lives <= 0){
+                var newDiv = document.createElement("div");
+                newDiv.innerHTML = '<p>The fear cackles as it fully manifests--You lose!</p><button type="button" class="btn btn-success  btn-lg btn-block" onclick="game.setGameUp()">Click here to play again!</button>';
+                getDialogue.prepend(newDiv);
+                numDefeat = 0;
+                gameEnd = true;
+            }
+
+            var y = 0;
+
+            for (var i = 0; i < currWord.length; i++ ){
+                if (currWord[i] == answer.word[i]){
+                    y++;
+                }
+            }
+
+            if (y == currWord.length){
+                numDefeat++;
+                var newDiv = document.createElement("div");
+                newDiv.innerHTML = '<p>The fear lets loose a warbly scream as it dissapates--You win!</p><button type="button" class="btn btn-success  btn-lg btn-block" onclick="game.setGameUp()">Click here to play again!</button>';
+                getDialogue.prepend(newDiv);
+                gameEnd = true;
+            }
+
+            if (numDefeat >= 10){
+                getDialogue.innerHTML = '<h3>Congratulations! You win!</h3><p><span class="sName">Shiver</span> thanks you--they\'re safe for now... That is, unless someone puts a new curse on them... </p><br><button type="button" class="btn btn-success  btn-lg btn-block" onclick="game.setGameUp()">Put a new curse on Shiver and start again!</button>';
+                gameEnd = true;
+                numDefeat = 0;
+            }
+        },
+
         main: function() {
 
             document.onkeyup = function(event) {
 
                 var letter = event.key.toLowerCase();
-                console.log(letter);
-                game.checkGuess(letter);
+                if (!gameEnd){
+                    console.log(letter);
+                    game.checkGuess(letter);
+                    game.checkScores();
+                }
 
             };
         },
