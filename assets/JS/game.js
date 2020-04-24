@@ -49,11 +49,12 @@
             setting = Math.floor(Math.random() * 4);
 
             getDialogue.style.backgroundColor = "black";
-            getDialogue.style.borderRadius = "0 0 25px 0";
+            getDialogue.style.borderRadius = "0 0 25px 25px";
 
             switch(setting) {
                 case 0:
                     getDungeonBox.style.backgroundImage = 'url("assets/images/Settings/set-city.jpg")';
+                    getDungeonBox.style.borderRadius = "25px";
                     getPlaceTitle.innerHTML = "<h3>Abandonned Street</h3>";
                     getDialogue.innerHTML = '<p>On the way home, <span class="sName">Shiver</span> feels someone watching them...</p>';
                     break;
