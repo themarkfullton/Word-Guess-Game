@@ -9,6 +9,7 @@ body {
 }
 
 .container {
+    margin-top: 3%;
     background-color: black;
 }
 
@@ -64,4 +65,8 @@ body {
 
 #fearBox{
     width: 100%;
+}
+
+#guessBox{
+    background-color: #7FB27F;
 }
