@@ -41,7 +41,6 @@
             let getInterface = document.querySelector("#interface");
             getExposition.style.display = 'none';
             getInterface.style.display = 'visible';
-
         },
 
         writeScore: function(){
@@ -178,6 +177,7 @@
                 newDiv.innerHTML = '<p>The fear cackles as it fully manifests--You lose!</p><button type="button" class="btn btn-success  btn-lg btn-block" onclick="game.setGameUp()">Click here to play again!</button>';
                 getDialogue.prepend(newDiv);
                 numDefeat = 0;
+                getBadge.innerHTML = "";
                 gameEnd = true;
             }
 
@@ -194,14 +194,24 @@
                 var newDiv = document.createElement("div");
                 newDiv.innerHTML = '<p>The fear lets loose a warbly scream as it dissapates--You win!</p><button type="button" class="btn btn-success  btn-lg btn-block" onclick="game.setGameUp()">Click here to play again!</button>';
                 getDialogue.prepend(newDiv);
+                this.addBadge();
                 gameEnd = true;
             }
 
             if (numDefeat >= 10){
                 getDialogue.innerHTML = '<h3>Congratulations! You win!</h3><p><span class="sName">Shiver</span> thanks you--they\'re safe for now... That is, unless someone puts a new curse on them... </p><br><button type="button" class="btn btn-success  btn-lg btn-block" onclick="game.setGameUp()">Put a new curse on Shiver and start again!</button>';
+                getBadge.innerHTML = "";
                 gameEnd = true;
                 numDefeat = 0;
             }
+        },
+
+        addBadge(){
+            let getBadge = document.querySelector("#badges");
+            var newDiv = document.createElement("div");
+            newDiv.classList.add("badgeBut");
+            newDiv.style.backgroundImage = "url('assets/Images/Icons/" + answer.badge + ".png')";
+            getBadge.append(newDiv);
         },
 
         main: function() {

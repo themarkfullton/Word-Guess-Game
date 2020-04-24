@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 
 body {
+    width: 100%;
     background: repeating-linear-gradient(
     45deg,
      #000000,
@@ -15,6 +16,10 @@ body {
 
 h1, h2, h3, h5 {
     font-family: 'Rock Salt', cursive;
+}
+
+h4 {
+    font-size: 15px;
 }
 
 .btn {
@@ -32,10 +37,6 @@ h1, h2, h3, h5 {
 .container {
     border-radius: 25px;
     margin-top: 2%;
-}
-
-.dungeonBox {
-    padding: 10px;
 }
 
 #exposition{
@@ -68,10 +69,10 @@ h1, h2, h3, h5 {
 }
 
 #header {
-    padding: 10px;
+    padding: 5px;
 }
 
-#placeTitle, #scoreBox{
+#fearBox, #scoreBox{
     padding: 10px;
 }
 
@@ -109,4 +110,12 @@ h1, h2, h3, h5 {
 
 #pastGuessBox{
     padding: 10px;
+}
+
+.badgeBut{
+    margin: 5px;
+    float: left;
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
 }
