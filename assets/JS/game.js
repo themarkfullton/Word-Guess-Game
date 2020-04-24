@@ -91,25 +91,26 @@
 
         printHangLines: function(){
             let getHashBox = document.querySelector("#hashBox");
-            var hashString = "<h5>";
+            var hashString = "<h1>";
 
             for (var i = 0; i < answer.word.length; i++){
                 hashString += " _ ";   
             }
             
-            getHashBox.innerHTML = hashString + "</h5>";
+            getHashBox.innerHTML = hashString + "</h1>";
         },
 
         printRemGuess: function(lives){
-            var lifeBar = '<h5>GUESSES LEFT:</h5> <span id="livesRem">'; 
-            
-            for(var i = 0; i <= lives; i++){
-                lifeBar += '*';
+            let getRemGuessBox = document.querySelector("#remGuessBox");
+            var lifeBar = "<h5>GUESSES LEFT: ";
+
+            var lives = answer.error - mistakes;
+
+            for (var i = 0; i < lives; i++){
+                lifeBar += " 👻 ";   
             }
-
-            lifeBar += '</span>';
-
-            return lifeBar;
+            
+            getRemGuessBox.innerHTML = lifeBar + "</h5>";
         },
 
         main: function() {
