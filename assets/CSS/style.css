@@ -8,6 +8,10 @@ body {
       );
 }
 
+.container {
+    background-color: black;
+}
+
 #exposition{
     position: absolute;
     overflow: auto;
@@ -37,6 +41,15 @@ body {
     color: white;
 }
 
+#header {
+    padding: 10px;
+}
+
+#placeTitle, #scoreBox{
+    padding: 10px;
+}
+
+
 #dialogue{
     background-color: black;
     color: white;
@@ -46,6 +59,9 @@ body {
     position: relative;
     width: 30%;
     padding: 10px;
-    background-color: rgba(0, 0, 0, 0.6);
     margin-right: -10px;
+}
+
+#fearBox{
+    width: 100%;
 }

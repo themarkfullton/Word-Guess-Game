@@ -1,9 +1,8 @@
-    let answer ='';
-    let maxWrong = 0;
-    let mistakes = 0;
-    let guessed = [];
-    let currWord = null;
-    let totalRight = 0;
+    var answer ='';
+    var maxWrong = 0;
+    var mistakes = 0;
+    var guessed = [];
+    var numDefeat = 0;
 
     let game = {
         
@@ -13,8 +12,16 @@
         },
 
         setGameUp: function(){
+            let getDungeonText = document.querySelector('#dungeonText');
+            let getHeader = document.querySelector('#header');
+            
+            getHeader.style.backgroundColor = "black";
+            getHeader.innerHTML = "<h1>THINGS THAT GO BUMP</h1>";
+            getDungeonText.style.backgroundColor = "rgba(0, 0, 0, 0.6)";
+    
             this.hideInstr();
             this.selectSetting();
+            this.writeScore();
             this.wordSetUp();
             this.main();
         },
@@ -63,34 +70,41 @@
               }
         },
 
+        writeScore: function(){
+            let getScoreBox = document.querySelector("#scoreBox");
+            getScoreBox.innerHTML = "<h5>Defeated " + numDefeat + " of 10</h5>";
+        },
+
         wordSetUp: function(){
+            let getFearPic = document.querySelector("#fearPic");
+            let getFearBox = document.querySelector("#fearBox");
             var indexNum = Math.floor(Math.random() * dictionary.length);
 
             answer = dictionary[indexNum];
             lives = dictionary[indexNum].error;
 
             getFearPic.innerHTML = '<img alt="fear" src="assets/Fears/'+ indexNum +'0>';
-            getfearBox.innerHTML = '<h5>' + answer.desc + '</h5>'
-            getNameBox.innerHTML = '<h4>' + this.printHangLines() + '</h4>';
-            getRemGuess.innerHTML = lifeBar(lives);
+            getFearBox.innerHTML = '<h5>' + answer.desc + '</h5>'
+            this.printHangLines();
+            this.printRemGuess(lives);
         },
 
         printHangLines: function(){
-            
+            let getHashBox = document.querySelector("#hashBox");
             var hashString = "<h5>";
 
             for (var i = 0; i < answer.word.length; i++){
                 hashString += " _ ";   
             }
             
-            getNameBox.innerHTML = hashString + "</h5>";
+            getHashBox.innerHTML = hashString + "</h5>";
         },
 
         printRemGuess: function(lives){
             var lifeBar = '<h5>GUESSES LEFT:</h5> <span id="livesRem">'; 
             
             for(var i = 0; i <= lives; i++){
-                lifeBar += '👻';
+                lifeBar += '*';
             }
 
             lifeBar += '</span>';
