@@ -1,4 +1,4 @@
-var fears = [
+var dictionary = [
     acaro = {
         word: "acaro",
         desc: "fear of itching",
