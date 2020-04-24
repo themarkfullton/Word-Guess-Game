@@ -8,26 +8,14 @@ body {
       );
 }
 
-body::-webkit-scrollbar-button {
-    background: none;
-}
-
-body::-webkit-scrollbar-thumb {
-    background: #7FB27F;
-}
-
-body::-webkit-scrollbar-track {
-    background: none;
-}
-
 #exposition{
     position: absolute;
-    overflow: scroll;
+    overflow: auto;
     top: 0;
     left: 0;
-    width: 90%;
-    height: 90%;
-    margin: 5%;
+    width: 95%;
+    height: 95%;
+    margin: 1%;
     padding: 100px;
     opacity: 0.87;
     border-radius: 25px;
@@ -43,14 +31,14 @@ body::-webkit-scrollbar-track {
     letter-spacing: 2px;
 }
 
-.header{
-    background-color: white;
-    width: 100%;
-}
-
 #dungeonBox{
     height: 400px;
     background-image: none;
+    color: white;
+}
+
+#dialogue{
+    background-color: black;
     color: white;
 }
 
