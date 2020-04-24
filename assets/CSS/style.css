@@ -1,16 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Oldenburg&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+
 body {
     background: repeating-linear-gradient(
-        45deg,
-        #1e272c,
-        #1e272c 10px,
-        #282C35 10px,
-        #282C35 20px
-      );
+    45deg,
+     #000000,
+     #000000 10px,
+     #284942 10px,
+     #284942 20px
+    );
+
+    font-family: 'Oldenburg', cursive;
+}
+
+h1, h2, h3, h5 {
+    font-family: 'Rock Salt', cursive;
+}
+
+.btn {
+    background-color: #174038;
+    font-family: 'Rock Salt', cursive;
+    border: none;
+}
+
+.btn:hover{
+    background-color: black;
+    border: none;
+    color: #174038;
 }
 
 .container {
-    margin-top: 3%;
-    background-color: black;
+    border-radius: 25px;
+    margin-top: 2%;
+}
+
+.dungeonBox {
+    object-fit: cover;
+    padding: 10px;
 }
 
 #exposition{
@@ -32,7 +58,7 @@ body {
 .sName{
     font-weight: bold;
     font-variant: small-caps;
-    color: #7FB27F;
+    color: #5b8c85;
     letter-spacing: 2px;
 }
 
@@ -50,9 +76,15 @@ body {
     padding: 10px;
 }
 
+#scoreBox{
+    font-size: 15px;
+}
+
 
 #dialogue{
-    background-color: black;
+    overflow: auto;
+    height: 5%;
+    padding: 30px;
     color: white;
 }
 
@@ -68,5 +100,14 @@ body {
 }
 
 #guessBox{
-    background-color: #7FB27F;
+    border-radius: 0 0 25px 0;
+    padding: 30px;
+}
+
+#remGuessBox{
+    padding: 10px;
+}
+
+#pastGuessBox{
+    padding: 10px;
 }

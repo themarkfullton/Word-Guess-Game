@@ -13,19 +13,23 @@
         },
 
         setGameUp: function(){
+            let getInterface = document.querySelector("#interface");
             let getDungeonText = document.querySelector('#dungeonText');
-            let getHeader = document.querySelector('#header');
+            let getGuessBox = document.querySelector('#guessBox');
             let getPastGuess = document.querySelector('#pastGuessBox');
+            let getHashBox = document.querySelector("#hashBox");
             
-            getHeader.style.backgroundColor = "black";
-            getHeader.innerHTML = "<h1>THINGS THAT GO BUMP</h1>";
+            getInterface.style.backgroundColor = "#174038";
+            getHashBox.style.backgroundColor = "#174038";
             getDungeonText.style.backgroundColor = "rgba(0, 0, 0, 0.6)";
+            
     
             this.hideInstr();
             this.selectSetting();
             this.writeScore();
             this.wordSetUp();
-            getPastGuess.innerHTML = "<h5>PAST GUESSES:<h5>";
+            getGuessBox.style.backgroundColor = "#5b8c85";
+            getPastGuess.innerHTML = "<h5>Past Guess:<h5>";
             this.main();
         },
 
@@ -44,38 +48,41 @@
 
             setting = Math.floor(Math.random() * 4);
 
+            getDialogue.style.backgroundColor = "black";
+            getDialogue.style.borderRadius = "0 0 25px 0";
+
             switch(setting) {
                 case 0:
                     getDungeonBox.style.backgroundImage = 'url("assets/images/Settings/set-city.jpg")';
-                    getPlaceTitle.innerHTML = "<h4>Abandonned Street</h4>";
-                    getDialogue.innerHTML = '<p>On the way home, <span class="sName">Shiver</span> feels someone watching them...</p><p><i>Press any key to guess the name of the fear...</i></p>';
+                    getPlaceTitle.innerHTML = "<h3>Abandonned Street</h3>";
+                    getDialogue.innerHTML = '<p>On the way home, <span class="sName">Shiver</span> feels someone watching them...</p>';
                     break;
                 case 1:
                     getDungeonBox.style.backgroundImage = 'url("assets/images/Settings/set-forest.jpg")';
-                    getPlaceTitle.innerHTML = "<h4>Forgotten Forest</h4>";
-                    getDialogue.innerHTML = '<p><span class="sName">Shiver</span> awakes from their sleep only time find themselves in a forboding forest...</p><p><i>Press any key to guess the name of the fear...</i></p>';
+                    getPlaceTitle.innerHTML = "<h3>Forgotten Forest</h3>";
+                    getDialogue.innerHTML = '<p><span class="sName">Shiver</span> awakes from their sleep only time find themselves in a forboding forest...</p>';
                     break;
                 case 2:
                     getDungeonBox.style.backgroundImage = 'url("assets/images/Settings/set-hospital.jpg")';
-                    getPlaceTitle.innerHTML = "<h4>Twisted Hospital</h4>";
-                    getDialogue.innerHTML = '<p>Although they intended to walk home, <span class="sName">Shiver\'s</span> feet took them to this abandonned hospital...</p><p><i>Press any key to guess the name of the fear...</i></p>';
+                    getPlaceTitle.innerHTML = "<h3>Twisted Hospital</h3>";
+                    getDialogue.innerHTML = '<p>Although they intended to walk home, <span class="sName">Shiver\'s</span> feet took them to this abandonned hospital...</p>';
                     break;
                 case 3:
                     getDungeonBox.style.backgroundImage = 'url("assets/images/Settings/set-house.jpg")';
-                    getPlaceTitle.innerHTML = "<h4>Living Mansion</h4>";
-                    getDialogue.innerHTML = '<p>Who lives here? <span class="sName">Shiver</span> certainly doesn\'t... Though they woke up here all the same...</p><p><i>Press any key to guess the name of the fear...</i></p>';
+                    getPlaceTitle.innerHTML = "<h3>Living Mansion</h3>";
+                    getDialogue.innerHTML = '<p>Who lives here? <span class="sName">Shiver</span> certainly doesn\'t... Though they woke up here all the same...</p>';
                     break;
                 case 4:
                     getDungeonBox.style.backgroundImage = 'url("assets/images/Settings/set-village.jpg")';
-                    getPlaceTitle.innerHTML = "<h4>Fishing Village</h4>";
-                    getDialogue.innerHTML = '<p>While on a cross-country trip, <span class="sName">Shiver</span> found themselves checking out this old, New England town...</p><p><i>Press any key to guess the name of the fear...</i></p>';
+                    getPlaceTitle.innerHTML = "<h3>Fishing Village</h3>";
+                    getDialogue.innerHTML = '<p>While on a cross-country trip, <span class="sName">Shiver</span> found themselves checking out this old, New England town...</p>';
                     break;
-              }
+            }
         },
 
         writeScore: function(){
             let getScoreBox = document.querySelector("#scoreBox");
-            getScoreBox.innerHTML = "<h5>Defeated " + numDefeat + " of 10</h5>";
+            getScoreBox.innerHTML = "<h4>Defeated " + numDefeat + " of 10</h4>";
         },
 
         wordSetUp: function(){
@@ -94,6 +101,8 @@
 
         printHangLines: function(){
             let getHashBox = document.querySelector("#hashBox");
+            getHashBox.style.letterSpacing = "2px";
+            getHashBox.style.padding = "30px";
             
             for (var i = 0; i < answer.word.length; i++){
                 currWord.push("_");   
@@ -106,7 +115,7 @@
 
         printRemGuess: function(lives){
             let getRemGuessBox = document.querySelector("#remGuessBox");
-            var lifeBar = "<h5>GUESSES LEFT: ";
+            var lifeBar = "<h5>Guesses Left: ";
 
             for (var i = 0; i < lives; i++){
                 lifeBar += " 👻 ";   
