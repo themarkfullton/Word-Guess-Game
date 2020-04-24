@@ -101,14 +101,17 @@
         },
 
         isAlph: function(letter) {
-            return /^[a-zA-Z]+$/.test(letter);
+            if (letter == "a" | letter == "b" | letter == "c" | letter == "d" | letter == "e" | letter == "f" | letter == "g" | letter == "h" | letter == "i" | letter == "j" | letter == "k" | letter == "l" | letter == "m" | letter == "n" | letter == "o" | letter == "p" | letter == "q" | letter == "r" | letter == "s" | letter == "t" | letter == "u" | letter == "v" | letter == "w" | letter == "x" | letter == "y" | letter == "z" ){
+                return true;
+            }
+            else{
+                return false;
+            }
         },
 
         checkGuess: function(letter){
             let getDialogue = document.querySelector("#dialogue");
             let getHashBox = document.querySelector("#hashBox");
-            console.log(currWord);
-            console.log(answer.word);
 
             var found = false;
             var alreadyGuessed = game.checkIfAlreadyGuessed(letter);
@@ -132,7 +135,6 @@
                 }
                 else {
                     lives--;
-                    console.log(lives);
                     this.printRemGuess(lives);
                     var newDiv = document.createElement("p");
                     newDiv.textContent = "Unfortunately '" + letter.toUpperCase() + "' is not the name! The fear begins to manifest.";
@@ -145,6 +147,7 @@
                 var hashString = currWord.join(" ");
 
                 getHashBox.innerHTML = "<h1>" + hashString + "phobia</h1>";
+                console.log("Ran checkGuess fn");
             }
             else {
                 console.log("Key was not a letter; did not run checkGuess");
@@ -155,11 +158,9 @@
             for (var i = 0; i < guessed.length; i++){
 
                 if (guessed[i] == letter){
-                    console.log("Found letter in guessed");
                     return true;
                 }
             } 
-            console.log("Did not find letter in guessed");
             return false;
         },
 
@@ -171,13 +172,14 @@
 
         checkScores: function(){
             let getDialogue = document.querySelector("#dialogue");
+            let getBadges = document.querySelector("#badges");
 
             if (lives <= 0){
                 var newDiv = document.createElement("div");
                 newDiv.innerHTML = '<p>The fear cackles as it fully manifests--You lose!</p><button type="button" class="btn btn-success  btn-lg btn-block" onclick="game.setGameUp()">Click here to play again!</button>';
                 getDialogue.prepend(newDiv);
                 numDefeat = 0;
-                getBadge.innerHTML = "";
+                getBadges.innerHTML = "<h4>Fears Conquered:</h4>";
                 gameEnd = true;
             }
 
@@ -200,7 +202,7 @@
 
             if (numDefeat >= 10){
                 getDialogue.innerHTML = '<h3>Congratulations! You win!</h3><p><span class="sName">Shiver</span> thanks you--they\'re safe for now... That is, unless someone puts a new curse on them... </p><br><button type="button" class="btn btn-success  btn-lg btn-block" onclick="game.setGameUp()">Put a new curse on Shiver and start again!</button>';
-                getBadge.innerHTML = "";
+                getBadges.innerHTML = "<h4>Fears Conquered:</h4>";
                 gameEnd = true;
                 numDefeat = 0;
             }
@@ -208,6 +210,10 @@
 
         addBadge(){
             let getBadge = document.querySelector("#badges");
+
+            if (numDefeat <= 1){
+                getBadge.innerHTML = "<h4>Fears Conquered:</h4><br>"
+            }
             var newDiv = document.createElement("div");
             newDiv.classList.add("badgeBut");
             newDiv.style.backgroundImage = "url('assets/Images/Icons/" + answer.badge + ".png')";
@@ -219,8 +225,8 @@
             document.onkeyup = function(event) {
 
                 var letter = event.key.toLowerCase();
+
                 if (!gameEnd){
-                    console.log(letter);
                     game.checkGuess(letter);
                     game.checkScores();
                 }
