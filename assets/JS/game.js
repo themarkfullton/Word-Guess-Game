@@ -3,6 +3,7 @@
     var mistakes = 0;
     var guessed = [];
     var numDefeat = 0;
+    var currWord = [];
 
     let game = {
         
@@ -24,7 +25,7 @@
             this.selectSetting();
             this.writeScore();
             this.wordSetUp();
-            getPastGuess.innerHTML = "<h5>PAST GUESSES:";
+            getPastGuess.innerHTML = "<h5>PAST GUESSES:<h5>";
             this.main();
         },
 
@@ -93,20 +94,19 @@
 
         printHangLines: function(){
             let getHashBox = document.querySelector("#hashBox");
-            var hashString = "<h1>";
-
+            
             for (var i = 0; i < answer.word.length; i++){
-                hashString += " _ ";   
+                currWord.push("_");   
             }
             
-            getHashBox.innerHTML = hashString + "</h1>";
+            var hashString = currWord.join(" ");
+
+            getHashBox.innerHTML = "<h1>" + hashString + "</h1>";
         },
 
         printRemGuess: function(lives){
             let getRemGuessBox = document.querySelector("#remGuessBox");
             var lifeBar = "<h5>GUESSES LEFT: ";
-
-            var lives = answer.error - mistakes;
 
             for (var i = 0; i < lives; i++){
                 lifeBar += " 👻 ";   
@@ -115,12 +115,44 @@
             getRemGuessBox.innerHTML = lifeBar + "</h5>";
         },
 
+        isAlph: function(letter) {
+            return /^[a-zA-Z]+$/.test(letter);
+        },
+
+        checkGuess: function(letter){
+            for (var i = 0; i < answer.word.length; i++){
+                if (this.isAlph(letter)){
+                    if (currWord[i] == "_"){
+                
+                        if (letter == answer.word[i]){
+                            currWord[i] = letter;
+                        }
+                        else {
+                            lives--;
+                            this.printRemGuess(lives);
+                            guessed.push(letter);
+                            this.printGuessWord(letter);
+                        }
+                    }
+                }
+                else {
+                    console.log("Key was not a letter; did not run checkGuess");
+                }
+            }
+        },
+
+        printGuessWord: function(letter){
+            let getPastGuess = document.querySelector("#pastGuessBox");
+
+            getPastGuess.append(letter);
+        },
+
         main: function() {
             document.onkeyup = function(event) {
 
                 var letter = event.key.toLowerCase();
         
-                console.log(letter);
+                this.checkGuess(letter);
 
             };
         },
