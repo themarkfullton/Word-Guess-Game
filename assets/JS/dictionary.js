@@ -1,3 +1,11 @@
+// ============================================================
+// Wanted to make this a separate file to keep things organized
+// ============================================================
+// [desc] Description of the fear; put below the _ _ _ thing
+// [error] The number of guesses a player can get wrong
+// [badge] The name of the pictures associated with this fear (used to show big picture and make badge)
+// [dia] The little dialogue when the fear appears
+
 var dictionary = [
     acaro = {
         word: ["a", "c", "a", "r", "o"],
@@ -97,11 +105,81 @@ var dictionary = [
         badge: "14",
         dia: 'The light fades to darkness. <span class="sName">Shiver</span> can\'t even see their own nose...',
     },
-    achluo = {
-        word: ["a", "c", "h", "l", "u", "o"],
-        desc: "Fear of the Dark",
-        error: 6,
+    arithmo = {
+        word: ["a", "r", "i", "t", "h", "m", "o"],
+        desc: "Fear of Numbers",
+        error: 4,
         badge: "15",
-        dia: 'The light fades to darkness. <span class="sName">Shiver</span> can\'t even see their own nose...',
+        dia: 'Everything fades from view; all <span class="sName">Shiver</span> can think about are numbers...',
+    },
+    atelo = {
+        word: ["a", "t", "e", "l", "o"],
+        desc: "Fear of Being Imperfect",
+        error: 5,
+        badge: "16",
+        dia: 'Suddenly <span class="sName">Shiver</span> begins to worry about how little they\'ve done in their life and how bad they look...',
+    },
+    coulro = {
+        word: ["c", "o", "u", "l", "r", "o"],
+        desc: "Fear of Clowns",
+        error: 6,
+        badge: "17",
+        dia: 'A crazed laugh breaks through the silence followed by janky carnival music. A small clown car eases to a stop before <span class="sName">Shiver</span>...',
+    },
+    entomo = {
+        word: ["e", "n", "t", "o", "m", "o"],
+        desc: "Fear of Insects",
+        error: 4,
+        badge: "18",
+        dia: 'The skittering of insectoid legs can be heard. <span class="sName">Shiver</span> feels something crawl into their shrit collar...',
+    },
+    eluro = {
+        word: ["e", "l", "u", "r", "o"],
+        desc: "Fear of Cats",
+        error: 5,
+        badge: "19",
+        dia: 'With a hiss, a cat appears before <span class="sName">Shiver</span>, hair on end...',
+    },
+    trypano = {
+        word: ["t", "r", "y", "p", "a", "n", "o"],
+        desc: "Fear of Injections",
+        error: 5,
+        badge: "20",
+        dia: 'A doctor appears by <span class="sName">Shiver</span>, flicking a needle...',
+    },
+    vermino = {
+        word: ["v", "e", "r", "m", "i", "n", "o"],
+        desc: "Fear of Germs",
+        error: 6,
+        badge: "21",
+        dia: 'The surfaces seem to come alive with crawling things. <span class="sName">Shiver</span> feels something oozing on their skin but refuses to look...',
+    },
+    scoliono = {
+        word: ["s", "c", "o", "l", "i", "o", "n", "o"],
+        desc: "Fear of School",
+        error: 6,
+        badge: "22",
+        dia: 'The school bell rings, but <span class="sName">Shiver</span> has no idea what classes they\'re taking...',
+    },
+    socio = {
+        word: ["s", "o", "c", "i", "o"],
+        desc: "Fear of Being Judged by the Public",
+        error: 4,
+        badge: "23",
+        dia: 'Laughter breaks out and faceless figures point at <span class="sName">Shiver</span>...',
+    },
+    ornitho = {
+        word: ["o", "r", "n", "i", "t", "h", "o"],
+        desc: "Fear of Birds",
+        error: 4,
+        badge: "24",
+        dia: 'With a caw, a massiv bird swoops down onto <span class="sName">Shiver\'s</span>shoulder. Blood is dripping from its beak...',
+    },
+    baro = {
+        word: ["b", "a", "r", "o"],
+        desc: "Fear of Gravity",
+        error: 4,
+        badge: "25",
+        dia: '<span class="sName">Shiver</span> slams to the ground, pulled by a crushing force...',
     },
 ]
