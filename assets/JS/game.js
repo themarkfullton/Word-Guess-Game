@@ -8,7 +8,7 @@
         // Explains game; calls clear intro screen fn
         instructions: function(){
             let getExpositionText = document.querySelector("#expositionText");
-            getExpositionText.innerHTML = '<h3>How to Play:</h3><p>Try to guess the name of the fear before it gets you.</p><p>A description of the fear can be found in the bottom left-hand column. In the bottom right, you can see the word that needs to be guessed.</p><p>Press any key to guess whether the word has that letter in it. If you guess wrong, the fear will begin to manifest. Different fears take differing number of turns to manifest. The number of guesses you have left will be displayed in the lower right.</p><p>Your goal is to get <span class="sName">Shiver</span> to the other side of the map.</p><h4>Good luck!</h4></p><br><button type="button" class="btn btn-success  btn-lg btn-block" onclick="game.setGameUp()">Play Game</button>';
+            getExpositionText.innerHTML = '<h3>How to Play:</h3><p>Try to guess the name of the fear before it gets you.</p><p>A description of the fear can be found beneath the word to be guessed.</p><p>Press any key to guess whether the word has that letter in it. If you guess wrong, the fear will begin to manifest. Different fears take differing number of turns to manifest. The number of guesses you have left will be displayed in the lower right.</p><p><span class="sName">Shiver\'s</span> family believes that if the fear is bested ten times, it can no longer manifest.</p><h4>Good luck!</h4></p><br><button type="button" class="btn btn-success  btn-lg btn-block" onclick="game.setGameUp()">Play Game</button>';
         },
 
         // Sets up interface for a new game
@@ -206,7 +206,7 @@
             if (y == currWord.length){
                 numDefeat++;
                 var newDiv = document.createElement("div");
-                newDiv.innerHTML = '<p>The fear lets loose a warbly scream as it dissapates--You win!</p><button type="button" class="btn btn-success  btn-lg btn-block" onclick="game.setGameUp()">Click here to play again!</button>';
+                newDiv.innerHTML = '<p>The fear lets loose a warbly scream as it dissipates--You win!</p><button type="button" class="btn btn-success  btn-lg btn-block" onclick="game.setGameUp()">Click here to play again!</button>';
                 getDialogue.prepend(newDiv);
                 this.addBadge();
                 gameEnd = true;
