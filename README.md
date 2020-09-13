@@ -20,3 +20,9 @@ Completed as an assignment for UCLA Coding Bootcamp. Mixed things up quite a bit
 ## Please Note
 
 None of these images belong to me. They're currently acting as placeholders until I have the time to draw and insert in my own. (As this was a bootcamp project, it was done on a time crunch and images got the brunt of the time cut!)
+
+## Screenshots
+
+<img src="snapshot1.PNG">
+<img src="snapshot2.PNG">
+<img src="snapshot3.PNG">
